@@ -23,6 +23,12 @@ async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
 
+        app.get('/coffee', async(req, res) => {
+            const cursor = coffeeCollection.find();
+            const result = await cursor.toArray();
+            res.send(result);
+        })
+
 
         const coffeeCollection = client.db('coffeeDB').collection('coffee');
 
